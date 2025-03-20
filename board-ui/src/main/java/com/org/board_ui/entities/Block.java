@@ -13,4 +13,5 @@ public class Block {
 	private String blockDate;
 	private String unblockDescrition;
 	private String unblockDate;
+	private Card card;
 }

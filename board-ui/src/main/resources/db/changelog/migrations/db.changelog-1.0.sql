@@ -1,5 +1,0 @@
-CREATE TABLE IF NOT EXISTS board_tb (
-    id BIGSERIAL,
-    name VARCHAR(255) NOT NULL,
-    CONSTRAINT pk_bord_id PRIMARY KEY (id)
-);

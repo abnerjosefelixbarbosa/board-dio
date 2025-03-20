@@ -1,8 +1,12 @@
 package com.org.board_ui.entities;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
@@ -13,4 +17,7 @@ public class Column {
 	private ColumnType type;
 	private Integer order;
 	private Board board;
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	private List<Card> cards;
 }

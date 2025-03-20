@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS board_tb (
+    id BIGSERIAL NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
+);
