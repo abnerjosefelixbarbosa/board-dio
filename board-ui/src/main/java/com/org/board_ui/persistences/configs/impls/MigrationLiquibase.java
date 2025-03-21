@@ -1,9 +1,6 @@
-package com.org.board_ui.configs.impls;
+package com.org.board_ui.persistences.configs.impls;
 
 import java.sql.Connection;
-
-import com.org.board_ui.configs.ConnectionConfig;
-import com.org.board_ui.configs.MigrationConfig;
 
 import liquibase.Contexts;
 import liquibase.LabelExpression;
@@ -13,13 +10,12 @@ import liquibase.database.DatabaseFactory;
 import liquibase.database.jvm.JdbcConnection;
 import liquibase.resource.ClassLoaderResourceAccessor;
 
-public class MigrationLiquibaseConfigImpl implements MigrationConfig {
+public class MigrationLiquibase {
 	public void executeMigration() {
-		Connection connection = null;
-		ConnectionConfig connectionConfig = new ConnectionPostgreSQLConfigImpl();
+		Connection connection = null; 
 		
 		try {
-			connection = connectionConfig.getConnection();
+			connection = new ConnectionPostgreSQL().getConnection();
 			
 			Database database = DatabaseFactory.getInstance()
 					.findCorrectDatabaseImplementation(new JdbcConnection(connection));
@@ -41,10 +37,5 @@ public class MigrationLiquibaseConfigImpl implements MigrationConfig {
 				}
 			}
 		}
-	}
-	
-	public static void main(String[] args) {
-		MigrationConfig config = new MigrationLiquibaseConfigImpl();
-		config.executeMigration();
 	}
 }

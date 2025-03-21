@@ -1,4 +1,4 @@
-package com.org.board_ui.entities;
+package com.org.board_ui.persistences.entities;
 
 import java.util.List;
 
