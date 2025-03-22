@@ -5,18 +5,16 @@ import java.sql.SQLException;
 import java.util.Optional;
 
 import com.mysql.cj.jdbc.StatementImpl;
-import com.org.board_ui.persistences.configs.impls.ConnectionPostgreSQL;
 import com.org.board_ui.persistences.entities.Board;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class BoardDAO {
-	private Connection connection;
+	private final Connection connection;
 	
 	public Board insert(final Board board) throws Exception {
 		var sql = "INSERT INTO board_tb (name) values (?);";
-		connection = new ConnectionPostgreSQL().getConnection();
 		
 		try (var statement = connection.prepareStatement(sql)) {
 			statement.setString(1, board.getName());
@@ -35,7 +33,6 @@ public class BoardDAO {
 	
 	public void delete(final Long id) throws Exception {
         var sql = "DELETE FROM board_tb WHERE id = ?;";
-        connection = new ConnectionPostgreSQL().getConnection();
         
         try(var statement = connection.prepareStatement(sql)){
             statement.setLong(1, id);
@@ -49,7 +46,6 @@ public class BoardDAO {
 
     public Optional<Board> findById(final Long id) throws Exception {
         var sql = "SELECT id, name FROM board_tb WHERE id = ?;";
-        connection = new ConnectionPostgreSQL().getConnection();
         var board = new Board();
         
         try(var statement = connection.prepareStatement(sql)){
@@ -75,7 +71,6 @@ public class BoardDAO {
 
     public boolean exists(final Long id) throws SQLException {
         var sql = "SELECT 1 FROM board_tb WHERE id = ?;";
-        connection = new ConnectionPostgreSQL().getConnection();
         
         try(var statement = connection.prepareStatement(sql)){
             statement.setLong(1, id);

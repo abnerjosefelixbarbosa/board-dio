@@ -1,6 +1,8 @@
-package com.org.board_ui.persistences.configs.impls;
+package com.org.board_ui.persistences.migrations;
 
 import java.sql.Connection;
+
+import com.org.board_ui.persistences.configs.connections.ConnectionPostgreSQL;
 
 import liquibase.Contexts;
 import liquibase.LabelExpression;

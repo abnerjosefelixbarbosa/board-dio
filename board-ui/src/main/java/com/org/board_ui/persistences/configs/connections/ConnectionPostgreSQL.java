@@ -1,4 +1,4 @@
-package com.org.board_ui.persistences.configs.impls;
+package com.org.board_ui.persistences.configs.connections;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
